@@ -26,7 +26,7 @@
         }
         .navbar img {
             height: 100px;
-            margin-left:75%;
+            margin-left: 75%;
         }
         .navbar span {
             font-size: 14px;
@@ -64,7 +64,6 @@
             font-size: 20px;
             color: #000;
             margin-bottom: 20px;
-            
         }
 
         .contact-form .form-group {
@@ -109,19 +108,17 @@
             margin-right: 10px;
         }
 
-      
         .contact-form .checkbox-container {
-    text-align: left;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-}
+            text-align: left;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
 
-.contact-form .checkbox-container input[type="checkbox"] {
-    margin-right: 15px; /* Adjust spacing between checkbox and label */
-}
-
+        .contact-form .checkbox-container input[type="checkbox"] {
+            margin-right: 15px; /* Adjust spacing between checkbox and label */
+        }
 
         .contact-form button {
             background-color: #0056D2;
@@ -158,8 +155,8 @@
     </style>
 </head>
 <body>
-     <!-- Navigation Bar -->
-     <div class="navbar">
+    <!-- Navigation Bar -->
+    <div class="navbar">
         <img src='assests/Company_logo.png' alt="Company Logo">
         <span></span>
     </div>
@@ -168,14 +165,12 @@
     <div class="content">
         <div class="left-frame">
             <!-- Add the image directly in the HTML -->
-
             <img src="assests/Kidney.png" alt="Description of image" style="width:100%; height:100%; object-fit: cover;">
 
             <div class="contact-form">
                 <!-- The contact form content goes here -->
                 <h2>To access the complete paper</h2>
-                <br>
-                <form action="https://submit-form.com/nVfYVG4n5" method="POST" target="hidden_iframe" onsubmit="redirectAfterSubmit()">
+                <form id="contactForm" action="https://submit-form.com/nVfYVG4n5" method="POST">
                     <div class="form-group inline-group">
                         <label for="firstName">First Name:</label>
                         <input type="text" id="firstName" name="firstName" required="">
@@ -200,22 +195,33 @@
 
                     <button type="submit">Download White Paper</button>
                 </form>
-
-                <!-- Hidden iframe to handle form submission and redirection -->
-                <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
-
-                <script>
-                    function redirectAfterSubmit() {
-                        document.getElementById('hidden_iframe').onload = function() {
-                            window.open('https://drive.google.com/drive/folders/1phUzSuRUfS9CTVpAlqt39LMruElo29_J?usp=sharing', '_blank'); /*Change the location here to have a PDF file */
-                        };
-                    }
-                </script>
             </div>
         </div>
         <div class="right-frame">
             <h1>Needle-free vascular access device for dialysis treatment</h1>
         </div>
     </div>
+
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            var formData = new FormData(this);
+            fetch(this.action, {
+                method: 'POST',
+                body: formData
+            }).then(response => {
+                if (response.ok) {
+                    // Redirect after form submission
+                    window.location.href = 'https://drive.google.com/drive/folders/1phUzSuRUfS9CTVpAlqt39LMruElo29_J?usp=sharing';
+                } else {
+                    alert('Form submission failed. Please try again.');
+                }
+            }).catch(error => {
+                console.error('Error:', error);
+                alert('Form submission failed. Please try again.');
+            });
+        });
+    </script>
 </body>
 </html>
