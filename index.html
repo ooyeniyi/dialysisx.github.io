@@ -206,9 +206,10 @@
 
                 <script>
                     function redirectAfterSubmit() {
-                        document.getElementById('hidden_iframe').onload = function() {
-                            window.open('https://drive.google.com/drive/folders/1phUzSuRUfS9CTVpAlqt39LMruElo29_J?usp=sharing', '_blank'); /*Change the location here to have a PDF file */
-                        };
+                        // Delay redirection slightly to ensure form submission happens first
+                        setTimeout(function() {
+                            window.location.href = 'https://drive.google.com/drive/folders/1phUzSuRUfS9CTVpAlqt39LMruElo29_J?usp=sharing';
+                        }, 1000);  // Adjust delay as needed
                     }
                 </script>
             </div>
