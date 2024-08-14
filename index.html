@@ -202,13 +202,19 @@
                 </form>
 
                 <!-- Hidden iframe to handle form submission and redirection -->
-                <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+                <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="redirectAfterSubmit();"></iframe>
 
                 <script>
                     function redirectAfterSubmit() {
-                        document.getElementById('hidden_iframe').onload = function() {
-                            window.open('https://drive.google.com/drive/folders/1phUzSuRUfS9CTVpAlqt39LMruElo29_J?usp=sharing', '_blank'); /*Change the location here to have a PDF file */
-                        };
+                        try {
+                            // Trigger the redirection when the iframe loads after form submission
+                            document.getElementById('hidden_iframe').onload = function() {
+                                // Ensure the window opens on mobile
+                                window.open('https://drive.google.com/drive/folders/1phUzSuRUfS9CTVpAlqt39LMruElo29_J?usp=sharing', '_blank');
+                            };
+                        } catch (error) {
+                            console.error("Redirection failed: ", error);
+                        }
                     }
                 </script>
             </div>
