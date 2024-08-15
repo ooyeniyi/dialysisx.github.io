@@ -19,7 +19,7 @@
             height: 80px;
             background-color: #f0f0f0;
             display: flex;
-            justify-content: center;
+            justify-content: flex-start; /* Align items to the left */
             align-items: center;
             padding: 0 20px;
             box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
@@ -36,16 +36,12 @@
             flex-direction: row;
         }
 
-        .left-frame,
-        .right-frame {
+        .left-frame {
             width: 50%;
+            position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
-        }
-
-        .left-frame {
-            position: relative;
         }
 
         .left-frame img {
@@ -58,10 +54,12 @@
             background-color: rgba(255, 255, 255, 0.85);
             padding: 20px;
             border-radius: 20px;
-            width: 100%;
-            max-width: 400px;
+            width: 60%;  /* Covers 60% of the image */
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
             position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);  /* Centers the form */
             text-align: center;
         }
 
@@ -136,8 +134,12 @@
         }
 
         .right-frame {
+            width: 50%;
             background-color: #ffffff;
             padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .right-frame h1 {
@@ -169,8 +171,7 @@
             }
 
             .contact-form {
-                position: relative;
-                margin: 20px auto;
+                width: 80%;  /* Adjust the form width for smaller screens */
             }
 
             .right-frame h1 {
@@ -199,6 +200,7 @@
 
             .contact-form {
                 padding: 15px;
+                width: 90%;  /* Further adjustment for very small screens */
             }
 
             .contact-form h2 {
@@ -219,14 +221,13 @@
 <body>
     <!-- Navigation Bar -->
     <div class="navbar">
-        <img src="assests/Company_logo.png" alt="Company Logo">
+        <img src="assets/Company_logo.png" alt="Company Logo">
     </div>
 
     <!-- Main Content -->
     <div class="content">
         <div class="left-frame">
-            <img src="assests/Kidney.png" alt="Description of image">
-
+            <img src="assets/Kidney.png" alt="Description of image">
             <div class="contact-form">
                 <h2>To access the complete paper</h2>
                 <form action="https://submit-form.com/CgFoAixtC" method="POST" target="hidden_iframe" onsubmit="redirectAfterSubmit()">
