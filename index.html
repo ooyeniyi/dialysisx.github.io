@@ -10,52 +10,57 @@
             font-family: Arial, sans-serif;
             display: flex;
             flex-direction: column;
-            height: 100vh;
+            min-height: 100vh;
         }
 
         /* Navigation Bar */
         .navbar {
             width: 100%;
-            height: 100px;
+            height: 80px;
             background-color: #f0f0f0;
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
             padding: 0 20px;
             box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
         }
+
         .navbar img {
-            height: 100px;
-            margin-left:75%;
-        }
-        .navbar span {
-            font-size: 14px;
-            color: #666;
+            height: 60px;
         }
 
         /* Main Content */
         .content {
             display: flex;
             flex: 1;
+            flex-direction: row;
         }
 
-        .left-frame {
+        .left-frame,
+        .right-frame {
             width: 50%;
-            background-size: cover; /* Cover the entire area */
-            background-position: center; /* Center the background image */
             display: flex;
             align-items: center;
             justify-content: center;
+        }
+
+        .left-frame {
             position: relative;
         }
 
+        .left-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
         .contact-form {
-            background-color: rgba(255, 255, 255, 0.85); /* Transparent background */
+            background-color: rgba(255, 255, 255, 0.85);
             padding: 20px;
-            border-radius: 20px; /* Rounded corners */
+            border-radius: 20px;
             width: 100%;
             max-width: 400px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Deep shadow */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
             position: absolute;
             text-align: center;
         }
@@ -64,12 +69,10 @@
             font-size: 20px;
             color: #000;
             margin-bottom: 20px;
-            
         }
 
         .contact-form .form-group {
             margin-bottom: 15px;
-            display: flex;
         }
 
         .contact-form label {
@@ -84,19 +87,14 @@
             justify-content: space-between;
         }
 
-        .contact-form .inline-group label {
-            width: 48%;
-            margin-right: 0%;
-        }
-
+        .contact-form .inline-group label,
         .contact-form .inline-group input {
             width: 48%;
-            margin-right: 2%;
         }
 
         .contact-form input[type="text"], 
         .contact-form input[type="email"] {
-            width: calc(100% - 20px); /* Adjusting for padding and border */
+            width: calc(100% - 20px);
             padding: 10px;
             border: 1px solid #ddd;
             border-radius: 10px;
@@ -109,19 +107,17 @@
             margin-right: 10px;
         }
 
-      
         .contact-form .checkbox-container {
-    text-align: left;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-}
+            text-align: left;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
 
-.contact-form .checkbox-container input[type="checkbox"] {
-    margin-right: 15px; /* Adjust spacing between checkbox and label */
-}
-
+        .contact-form .checkbox-container input[type="checkbox"] {
+            margin-right: 15px;
+        }
 
         .contact-form button {
             background-color: #0056D2;
@@ -140,57 +136,115 @@
         }
 
         .right-frame {
-            width: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             background-color: #ffffff;
             padding: 20px;
         }
 
         .right-frame h1 {
-            font-size: 48px;
+            font-size: 36px;
             font-weight: bold;
             color: #6660D0;
             text-align: center;
             font-style: italic;
         }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .content {
+                flex-direction: column;
+            }
+
+            .left-frame,
+            .right-frame {
+                width: 100%;
+                height: auto;
+            }
+
+            .navbar {
+                height: 60px;
+            }
+
+            .navbar img {
+                height: 40px;
+            }
+
+            .contact-form {
+                position: relative;
+                margin: 20px auto;
+            }
+
+            .right-frame h1 {
+                font-size: 28px;
+            }
+
+            .contact-form .form-group.inline-group {
+                flex-direction: column;
+            }
+
+            .contact-form .inline-group label,
+            .contact-form .inline-group input {
+                width: 100%;
+                margin-right: 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .navbar {
+                height: 50px;
+            }
+
+            .navbar img {
+                height: 30px;
+            }
+
+            .contact-form {
+                padding: 15px;
+            }
+
+            .contact-form h2 {
+                font-size: 18px;
+            }
+
+            .contact-form button {
+                padding: 10px 15px;
+                font-size: 14px;
+            }
+
+            .right-frame h1 {
+                font-size: 24px;
+            }
+        }
     </style>
 </head>
 <body>
-     <!-- Navigation Bar -->
-     <div class="navbar">
-        <img src='assests/Company_logo.png' alt="Company Logo">
-        <span></span>
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <img src="assets/Company_logo.png" alt="Company Logo">
     </div>
 
     <!-- Main Content -->
     <div class="content">
         <div class="left-frame">
-            <!-- Add the image directly in the HTML -->
-
-            <img src="assests/Kidney.png" alt="Description of image" style="width:100%; height:100%; object-fit: cover;">
+            <img src="assets/Kidney.png" alt="Description of image">
 
             <div class="contact-form">
-                <!-- The contact form content goes here -->
                 <h2>To access the complete paper</h2>
-                <br>
                 <form action="https://submit-form.com/CgFoAixtC" method="POST" target="hidden_iframe" onsubmit="redirectAfterSubmit()">
                     <div class="form-group inline-group">
                         <label for="firstName">First Name:</label>
-                        <input type="text" id="firstName" name="firstName" required="">
+                        <input type="text" id="firstName" name="firstName" required>
                         <label for="lastName">Last Name:</label>
-                        <input type="text" id="lastName" name="lastName" required="">
+                        <input type="text" id="lastName" name="lastName" required>
                     </div>
                     
                     <div class="form-group">
                         <label for="profession">Job Title:</label>
-                        <input type="text" id="profession" name="profession" required="">
+                        <input type="text" id="profession" name="profession" required>
                     </div>
 
                     <div class="form-group">
                         <label for="email">Email:</label>
-                        <input type="email" id="email" name="email" required="">
+                        <input type="email" id="email" name="email" required>
                     </div>
                     
                     <div class="checkbox-container">
@@ -201,15 +255,13 @@
                     <button type="submit">Download White Paper</button>
                 </form>
 
-                <!-- Hidden iframe to handle form submission and redirection -->
                 <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
 
                 <script>
                     function redirectAfterSubmit() {
-                        // Delay redirection slightly to ensure form submission happens first
                         setTimeout(function() {
                             window.location.href = 'https://drive.google.com/drive/folders/1phUzSuRUfS9CTVpAlqt39LMruElo29_J?usp=sharing';
-                        }, 1000);  // Adjust delay as needed
+                        }, 1000);
                     }
                 </script>
             </div>
